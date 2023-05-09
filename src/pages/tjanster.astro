@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import Layout from '@layouts/Page.astro';
+import Container from '@components/Container.astro';
+import SectionHead from '@components/SectionHead.astro';
+import { COMPANY_SHORT } from '@config/consts';
+import { services } from '@config/services';
+
+const title = 'Tjänster';
+---
+
+<Layout seo={{ title }}>
+  <Container>
+    <SectionHead>
+      <Fragment slot="title">{title}</Fragment>
+      <Fragment slot="desc">Förverkliga dina byggdrömmar.</Fragment>
+    </SectionHead>
+
+    <div class="mx-auto mt-16 flex max-w-4xl flex-col gap-3">
+      <h2 class="text-3xl font-bold text-gray-800">
+        Expertis och kvalitet för varje byggprojekt
+      </h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+        Med {COMPANY_SHORT} får du en mångsidig partner som kombinerar erfarenhet,
+        teknisk kompetens och kreativa lösningar för att uppnå bästa möjliga resultat
+        i ditt byggprojekt.
+      </p>
+    </div>
+    <div class="mx-auto mt-12 grid max-w-4xl gap-10 md:grid-cols-3">
+      {
+        services.map((service) => (
+          <div>
+            <div class="aspect-square w-full">
+              <Image
+                src={service.image.src}
+                width={600}
+                height={400}
+                sizes="(max-width: 800px) 100vw, 400px"
+                decoding="auto"
+                loading="eager"
+                class="h-full w-full rounded object-cover transition group-hover:-translate-y-1 group-hover:shadow-xl"
+                alt={service.title}
+              />
+            </div>
+            <div class="mt-4 text-center">
+              <h2 class="text-lg text-gray-800">{service.title}</h2>
+              <p class="text-sm text-slate-500">{service.description}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</Layout>

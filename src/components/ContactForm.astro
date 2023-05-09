@@ -1,0 +1,122 @@
+---
+import Button from './ui/Button.astro';
+---
+
+<form
+  action=""
+  method="POST"
+  id="form"
+  name="contact"
+  class="needs-validation"
+  data-netlify="true"
+  novalidate
+>
+  <input type="hidden" name="form-name" value="contact" />
+  <div class="mb-5">
+    <input
+      type="text"
+      placeholder="Namn"
+      required
+      class="w-full rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-gray-100 placeholder:text-gray-800 focus:border-gray-600 focus:ring-4"
+      name="name"
+    />
+    <div class="empty-feedback invalid-feedback mt-1 text-sm text-red-400">
+      Vänligen ange ditt namn.
+    </div>
+  </div>
+  <div class="mb-5">
+    <label for="email_address" class="sr-only">E-postadress</label><input
+      id="email_address"
+      type="email"
+      placeholder="E-postadress"
+      name="email"
+      required
+      class="w-full rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-gray-100 placeholder:text-gray-800 focus:border-gray-600 focus:ring-4"
+    />
+    <div class="empty-feedback mt-1 text-sm text-red-400">
+      Vänligen ange din e-postadress.
+    </div>
+    <div class="invalid-feedback mt-1 text-sm text-red-400">
+      Vänligen ange en giltig e-postadress.
+    </div>
+  </div>
+  <div class="mb-3">
+    <textarea
+      name="message"
+      required
+      placeholder="Ditt meddelande"
+      class="h-36 w-full rounded-md border-2 border-gray-300 px-4 py-3 outline-none ring-gray-100 placeholder:text-gray-800 focus:border-gray-600 focus:ring-4"
+    ></textarea>
+    <div class="empty-feedback invalid-feedback mt-1 text-sm text-red-400">
+      Vänligen ange ditt meddelande.
+    </div>
+  </div>
+  <Button type="submit" size="lg" style="gradient" block>Skicka</Button>
+  <div id="result" class="hover:bg-gradient- mt-3 text-center"></div>
+</form>
+
+<style>
+  .invalid-feedback,
+  .empty-feedback {
+    display: none;
+  }
+
+  .was-validated :placeholder-shown:invalid ~ .empty-feedback {
+    display: block;
+  }
+
+  .was-validated :not(:placeholder-shown):invalid ~ .invalid-feedback {
+    display: block;
+  }
+
+  .is-invalid,
+  .was-validated :invalid {
+    border-color: #dc3545;
+  }
+</style>
+
+<script is:inline>
+  const form = document.getElementById('form');
+  const result = document.getElementById('result');
+
+  function getFormDataString(formEl) {
+    var formData = new FormData(formEl);
+    return new URLSearchParams(formData).toString();
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    form.classList.add('was-validated');
+    if (!form.checkValidity()) {
+      form.querySelectorAll(':invalid')[0].focus();
+      return;
+    }
+
+    result.innerHTML = 'Skickar...';
+
+    fetch(form.action, {
+      method: form.method,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: getFormDataString(form)
+    })
+      .then(async () => {
+        result.classList.add('text-green-500');
+        result.innerHTML = 'Tack för ditt meddelande!';
+      })
+      .catch((error) => {
+        console.log(error);
+        result.classList.add('text-red-500');
+        result.innerHTML = 'Någonting gick fel!';
+      })
+      .then(function () {
+        form.reset();
+        form.classList.remove('was-validated');
+        setTimeout(() => {
+          result.classList.remove('text-red-500');
+          result.style.display = 'none';
+        }, 5000);
+      });
+  });
+</script>

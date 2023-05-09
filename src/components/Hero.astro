@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import { Icon } from 'astro-icon';
+import workersImage from '@assets/images/workers.svg';
+import Link from '@components/ui/Link.astro';
+import { SITE_DESCRIPTION, SLOGAN } from '@config/consts';
+---
+
+<main class="grid place-items-center py-8 md:pb-24 md:pt-12 lg:grid-cols-2">
+  <div class="hidden py-6 md:order-1 md:ml-8 md:block">
+    <Image
+      src={workersImage.src}
+      width={600}
+      height={400}
+      decoding="auto"
+      loading="eager"
+      format="avif"
+      quality="max"
+      alt="Arbetare som jobbar med byggnation"
+    />
+  </div>
+  <div>
+    <h1
+      class="text-5xl font-bold sm:leading-tight lg:text-6xl lg:tracking-tight xl:text-7xl xl:tracking-tighter"
+    >
+      {SLOGAN}
+    </h1>
+    <p class="mt-4 max-w-xl text-lg text-slate-600">
+      {SITE_DESCRIPTION}
+    </p>
+    <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+      <Link
+        href="/kontakt"
+        style="gradient"
+        class="flex items-center justify-center gap-1"
+      >
+        <Icon class="mr-2 h-5 w-5 text-white" name="bx:bxs-paint-roll" />
+        Begär offert
+      </Link>
+    </div>
+  </div>
+</main>

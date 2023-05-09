@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+import trafikverket from '@assets/images/trafikverket_vertical_red_logo.png';
+import vasteras from '@assets/images/vasteras_stad_logo.png';
+---
+
+<div class="mt-24">
+  <h2 class="text-4xl font-bold lg:text-5xl lg:tracking-tight">
+    Våra beställare och samarbetspartners
+  </h2>
+  <div class="mt-12 grid gap-12 md:grid-cols-2">
+    <div class="flex items-center justify-center">
+      <Image
+        src={trafikverket.src}
+        width={200}
+        height={140}
+        decoding="async"
+        loading="lazy"
+        format="avif"
+        quality="max"
+        alt="Trafikverket logotyp"
+      />
+    </div>
+    <div class="flex items-center justify-center">
+      <Image
+        src={vasteras.src}
+        width={100}
+        height={140}
+        decoding="async"
+        loading="lazy"
+        format="avif"
+        quality="max"
+        alt="Västerås stad logotyp"
+      />
+    </div>
+  </div>
+</div>

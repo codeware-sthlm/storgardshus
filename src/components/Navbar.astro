@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import { Astronav, MenuItems, MenuIcon } from 'astro-navbar';
+import logo from '@assets/images/logo.svg';
+import logoWithName from '@assets/images/logo_with_company_name.svg';
+import { menuItems } from '@config/menu';
+import Container from './Container.astro';
+---
+
+<Container>
+  <header
+    class="my-5 flex flex-col items-center justify-between md:flex-row md:items-end"
+  >
+    <Astronav>
+      <div class="flex w-full items-center justify-between md:w-auto">
+        <a href="/" class="text-lg">
+          <Image
+            src={logoWithName.src}
+            width={300}
+            height={60}
+            decoding="auto"
+            loading="eager"
+            class="hidden xs:block"
+            alt="Storgårdshus AB logo"
+          />
+          <Image
+            src={logo.src}
+            width={60}
+            height={35}
+            decoding="auto"
+            loading="eager"
+            class="block xs:hidden"
+            alt="Storgårdshus AB logo"
+          />
+        </a>
+        <div class="block md:hidden">
+          <MenuIcon class="h-6 w-6 text-gray-800" />
+        </div>
+      </div>
+      <MenuItems
+        class="mt-4 hidden w-full border-b-2 border-gray-200 pb-4 md:my-0 md:flex md:w-auto md:border-none md:pb-0"
+      >
+        <ul class="flex flex-col md:flex-row md:gap-3">
+          {
+            menuItems.map((item) => (
+              <li>
+                <a
+                  href={item.path}
+                  class="flex py-2 text-lg text-gray-600 hover:text-gray-900 md:px-3 md:text-base"
+                >
+                  {item.title}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </MenuItems>
+    </Astronav>
+  </header>
+</Container>

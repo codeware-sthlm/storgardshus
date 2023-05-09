@@ -1,8 +1,18 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [mdx(), tailwind()],
+  site: 'https://storgardshus.se',
+  // See https://docs.astro.build/en/guides/assets/#enabling-assets-in-your-project
+  experimental: {
+    assets: true
+  },
+  // See https://docs.astro.build/en/guides/assets/#using-sharp
+  image: {
+    service: 'astro/assets/services/sharp'
+  },
+  integrations: [mdx(), tailwind(), sitemap()]
 });

@@ -1,0 +1,58 @@
+---
+import { COMPANY_FULL, SITE_TITLE, SITE_DESCRIPTION } from '@config/consts';
+
+export type Props = {
+  title?: string;
+  description?: string;
+  canonicalURL?: URL | string;
+  image?: string;
+};
+
+const title = Astro.props.title
+  ? `${Astro.props.title} | ${COMPANY_FULL}`
+  : SITE_TITLE;
+const description = Astro.props.description || SITE_DESCRIPTION;
+const canonicalURL =
+  Astro.props.canonicalURL || new URL(Astro.url.pathname, Astro.site);
+const image = new URL(
+  Astro.props.image || './logo_with_company_name.svg',
+  Astro.site
+);
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+<meta name="robots" content="index" />
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+<!-- Generator -->
+<meta name="generator" content={Astro.generator} />
+<!-- Open Graph / Facebook -->
+<meta property="og:locale" content="sv_SE" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content="{title}" />
+<meta property="og:image" content={image} />
+<meta property="og:image:type" content="image/svg+xml" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={image} />
+
+<!-- Google Analytics -->
+<script>
+  var host = window.location.hostname;
+  if (host != 'localhost') {
+    // Place Google Analytics code here.
+  }
+</script>

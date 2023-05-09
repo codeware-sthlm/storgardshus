@@ -1,0 +1,32 @@
+---
+import { Icon } from 'astro-icon';
+import { COMPANY_SHORT } from '@config/consts';
+import { services } from '@config/services';
+---
+
+<div class="mt-8 md:mt-0">
+  <h2 class="text-4xl font-bold lg:text-5xl lg:tracking-tight">
+    Expertis och kvalitet för varje byggprojekt
+  </h2>
+  <p class="mt-4 text-lg text-slate-600">
+    Med {COMPANY_SHORT} får du en mångsidig partner som kombinerar erfarenhet, teknisk
+    kompetens och kreativa lösningar för att uppnå bästa möjliga resultat i ditt
+    byggprojekt.
+  </p>
+</div>
+
+<div class="mt-12 grid gap-12 sm:grid-cols-2 md:grid-cols-3">
+  {
+    services.map((item) => (
+      <div class="flex items-start gap-4">
+        <div class="mt-1 h-8 w-8 shrink-0 rounded-full p-2 bg-gradient ">
+          <Icon class="text-white" name={item.icon} />
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold">{item.title}</h3>{' '}
+          <p class="mt-2 leading-relaxed text-slate-500">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>

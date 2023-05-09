@@ -1,0 +1,48 @@
+---
+import { Icon } from 'astro-icon';
+import Layout from '@layouts/Page.astro';
+import Container from '@components/Container.astro';
+import Sectionhead from '@components/SectionHead.astro';
+import Contactform from '@components/ContactForm.astro';
+---
+
+<Layout seo={{ title: 'Kontakta oss' }}>
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Kontakta oss</Fragment>
+      <Fragment slot="desc">
+        Intresserad av att förverkliga dina byggdrömmar?
+      </Fragment>
+    </Sectionhead>
+
+    <div class="mx-auto mt-16 grid max-w-4xl gap-10 md:grid-cols-2">
+      <div>
+        <h2 class="text-2xl font-medium text-gray-800">
+          Tveka inte att höra av dig!
+        </h2>
+        <p class="mt-3 text-lg leading-relaxed text-slate-500">
+          Du når oss via telefon eller mail. Du kan också fylla i
+          kontaktformuläret så återkommer vi snarast med information och
+          rådgivning anpassad för ditt projekt.
+        </p>
+        <div class="mt-5">
+          <div class="mt-2 flex items-center space-x-2 text-gray-600">
+            <Icon class="h-4 w-4 text-gray-400" name="uil:map-marker" />
+            <span>Drottninggatan 4A, 724 64 Västerås</span>
+          </div><div class="mt-2 flex items-center space-x-2 text-gray-600">
+            <Icon class="h-4 w-4 text-gray-400" name="uil:envelope" /><a
+              href="mailto:info@storgardshus.se">info@storgardshus.se</a
+            >
+          </div><div class="mt-2 flex items-center space-x-2 text-gray-600">
+            <Icon class="h-4 w-4 text-gray-400" name="uil:phone" /><a
+              href="tel:+46701234567">070-123 45 67</a
+            >
+          </div>
+        </div>
+      </div>
+      <div>
+        <Contactform />
+      </div>
+    </div>
+  </Container>
+</Layout>

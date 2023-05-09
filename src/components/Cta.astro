@@ -1,0 +1,19 @@
+---
+import Link from '@components/ui/Link.astro';
+import { COMPANY_SHORT } from '@config/consts';
+---
+
+<div
+  class="mx-auto mt-16 flex max-w-5xl flex-col items-center rounded-lg bg-black p-8 text-center md:px-20 md:py-20"
+>
+  <h2 class="text-4xl tracking-tight text-white md:text-6xl">
+    Förverkliga dina byggdrömmar.
+  </h2>
+  <p class="mt-4 text-lg text-slate-400 md:text-xl">
+    Oavsett om du planerar en renovering, ombyggnation eller nyproduktion, står
+    vi på {COMPANY_SHORT} redo att hjälpa dig genom hela processen.
+  </p>
+  <div class="mt-5 flex">
+    <Link href="/kontakt" style="inverted">Ta första steget</Link>
+  </div>
+</div>

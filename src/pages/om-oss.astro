@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Layout from '@layouts/Page.astro';
+import Container from '@components/Container.astro';
+import SectionHead from '@components/SectionHead.astro';
+import { COMPANY_SHORT } from '@config/consts';
+
+// Filter team entries with 'draft: false' & date before current date
+const publishedTeamMembers = await getCollection('team', ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
+---
+
+<Layout seo={{ title: 'Om oss' }}>
+  <Container>
+    <SectionHead>
+      <Fragment slot="title">Om oss</Fragment>
+      <Fragment slot="desc">Experter inom bygg sedan 1996.</Fragment>
+    </SectionHead>
+
+    <div class="mx-auto mt-16 flex max-w-4xl flex-col gap-3">
+      <h2 class="text-3xl font-bold text-gray-800">
+        Förverkliga dina byggdrömmar med oss
+      </h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+        {COMPANY_SHORT} är ett byggföretag som arbetar i Västerås och Mälardalen.
+        Vi utför renoveringar, ombyggnader, tillbyggnader, nyproduktioner samt bullerskärmar.
+      </p>
+    </div>
+    <div class="mx-auto mt-12 grid max-w-4xl gap-10 md:grid-cols-3">
+      {
+        publishedTeamMembers.map((member) => {
+          const avatarLg = member.data.avatars.at(0);
+          const avatarSm = member.data.avatars.at(1);
+          const avatarXs = member.data.avatars.at(2);
+
+          if (!avatarLg || !avatarSm || !avatarXs) return null;
+
+          return (
+            <div class="group">
+              <div class="aspect-square w-full">
+                <Image
+                  src={`${avatarLg.src}`}
+                  width={800}
+                  height={800}
+                  sizes="(max-width: 800px) 100vw, 400px"
+                  srcset={`${avatarXs.src} ${avatarXs.width}w, ${avatarSm.src} ${avatarSm.width}w`}
+                  decoding="auto"
+                  loading="eager"
+                  class="h-full w-full rounded object-cover transition group-hover:-translate-y-1 group-hover:shadow-xl"
+                  alt={avatarLg.alt}
+                />
+              </div>
+
+              <div class="mt-4 text-center">
+                <h2 class="text-lg text-gray-800">{member.data.name}</h2>
+                <h3 class="text-sm text-slate-500">{member.data.title}</h3>
+                <a
+                  href={`mailto:${member.data.email}`}
+                  class="text-sm text-slate-500"
+                >
+                  {member.data.email}
+                </a>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </Container>
+</Layout>
