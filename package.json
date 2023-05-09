@@ -14,16 +14,16 @@
     "format": "prettier --write --plugin-search-dir=. 'src/**/*.{ts,tsx,js,jsx,astro}'"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.19.1",
+    "@astrojs/mdx": "^0.18.4",
     "@astrojs/sitemap": "^1.3.0",
-    "@astrojs/tailwind": "^3.1.2",
-    "astro": "^2.4.3",
+    "@astrojs/tailwind": "^3.1.1",
+    "astro": "2.3.0",
     "astro-icon": "^0.8.0",
     "astro-navbar": "^1.2.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
-    "sharp": "^0.32.1",
-    "tailwindcss": "^3.3.2"
+    "sharp": "^0.31.3",
+    "tailwindcss": "^3.3.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
