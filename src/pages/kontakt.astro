@@ -4,9 +4,11 @@ import Layout from '@layouts/Page.astro';
 import Container from '@components/Container.astro';
 import Sectionhead from '@components/SectionHead.astro';
 import Contactform from '@components/ContactForm.astro';
+
+const title = 'Kontakta oss';
 ---
 
-<Layout seo={{ title: 'Kontakta oss' }}>
+<Layout title={title}>
   <Container>
     <Sectionhead>
       <Fragment slot="title">Kontakta oss</Fragment>

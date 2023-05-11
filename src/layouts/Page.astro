@@ -1,17 +1,15 @@
 ---
-import type { Props as BaseHeadProps } from '@components/BaseHead.astro';
 import Footer from '@components/Footer.astro';
 import Navbar from '@components/Navbar.astro';
 import Layout from './Base.astro';
+import type { Props } from './Base.astro';
 
-export interface Props {
-  seo?: BaseHeadProps;
-}
+export { Props };
 
-const { seo } = Astro.props as Props;
+const { title } = Astro.props as Props;
 ---
 
-<Layout seo={seo ?? {}}>
+<Layout title={title}>
   <Navbar slots="header" />
   <div id="page">
     <slot />

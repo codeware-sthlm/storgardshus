@@ -10,9 +10,11 @@ import { COMPANY_SHORT } from '@config/consts';
 const publishedTeamMembers = await getCollection('team', ({ data }) => {
   return !data.draft && data.publishDate < new Date();
 });
+
+const title = 'Om oss';
 ---
 
-<Layout seo={{ title: 'Om oss' }}>
+<Layout title={title}>
   <Container>
     <SectionHead>
       <Fragment slot="title">Om oss</Fragment>

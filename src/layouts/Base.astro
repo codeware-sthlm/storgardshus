@@ -1,17 +1,56 @@
 ---
+import { SEO } from 'astro-seo';
 import BaseHead from '@components/BaseHead.astro';
-import type { Props as BaseHeadProps } from '@components/BaseHead.astro';
+import { COMPANY_FULL, SITE_DESCRIPTION, SITE_TITLE } from '@config/consts';
 
 export interface Props {
-  seo?: BaseHeadProps;
+  title: string | undefined;
 }
 
-const { seo } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
+
+const resolvedImageWithDomain = new URL(
+  '/opengraph.png',
+  Astro.site
+).toString();
+
+const { title } = Astro.props;
+
+const makeTitle = `${title ? title + ' | ' : ''}${COMPANY_FULL}`;
 ---
 
 <html lang="en" class="bg-default">
   <head>
-    <BaseHead {...seo} />
+    <BaseHead />
+    <SEO
+      title={makeTitle}
+      description={SITE_DESCRIPTION}
+      canonical={canonicalURL}
+      openGraph={{
+        basic: {
+          url: canonicalURL,
+          type: 'website',
+          title: SITE_TITLE,
+          image: resolvedImageWithDomain
+        },
+        optional: {
+          description: SITE_DESCRIPTION,
+          locale: 'sv_SE',
+          siteName: COMPANY_FULL
+        },
+        image: {
+          type: 'image/png',
+          width: 1200,
+          alt: 'Skärmavbild av Storgårdshus AB:s hemsida'
+        }
+      }}
+      twitter={{
+        title: SITE_TITLE,
+        description: SITE_DESCRIPTION,
+        card: 'summary_large_image',
+        image: resolvedImageWithDomain
+      }}
+    />
   </head>
   <body class="flex min-h-screen flex-col">
     <slot name="header" />
