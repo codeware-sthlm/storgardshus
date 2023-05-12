@@ -11,5 +11,5 @@
       "@utils/*": ["src/utils/*"]
     }
   },
-  "include": ["./netlify/functions/**/*.ts", "src/**/*"]
+  "include": ["./netlify/**/*.ts", "src/**/*"]
 }
