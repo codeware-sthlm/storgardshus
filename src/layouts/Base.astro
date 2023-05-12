@@ -4,7 +4,7 @@ import BaseHead from '@components/BaseHead.astro';
 import { COMPANY_FULL, SITE_DESCRIPTION, SITE_TITLE } from '@config/consts';
 
 export interface Props {
-  title: string | undefined;
+  title?: string | undefined;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
