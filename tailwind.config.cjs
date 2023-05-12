@@ -13,7 +13,7 @@ module.exports = {
         darkerBlue: '#1A66A6'
       },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans]
+        sans: ['InterVariable', 'Inter', ...defaultTheme.fontFamily.sans]
       }
     },
     screens: {
