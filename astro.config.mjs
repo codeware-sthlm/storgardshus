@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://storgardshus.se',
+  site: 'https://www.storgardshus.se',
   // See https://docs.astro.build/en/guides/assets/#enabling-assets-in-your-project
   experimental: {
     assets: true

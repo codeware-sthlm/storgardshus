@@ -27,7 +27,7 @@ const description =
       <Fragment slot="title">{title}</Fragment>
       <Fragment slot="desc">{description}</Fragment>
     </SectionHead>
-    <main class="mt-16">
+    <div class="mt-16">
       <ul class="mx-auto grid max-w-4xl gap-16">
         {
           publishedProjects.map((proj, index) => (
@@ -71,6 +71,6 @@ const description =
           ))
         }
       </ul>
-    </main>
+    </div>
   </Container>
 </Layout>
