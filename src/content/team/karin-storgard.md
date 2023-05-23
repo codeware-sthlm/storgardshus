@@ -1,7 +1,7 @@
 ---
 draft: false
 name: 'Karin Storgård'
-email: 'karin@byggruppen.nu'
+email: 'karin@storgardshus.se'
 title: 'Ekonomi'
 avatars:
   [

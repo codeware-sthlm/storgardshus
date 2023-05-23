@@ -4,7 +4,9 @@ import Layout from '@layouts/Page.astro';
 import Container from '@components/Container.astro';
 import Sectionhead from '@components/SectionHead.astro';
 import Contactform from '@components/ContactForm.astro';
+import { CONTACT } from '@config/consts';
 
+const tel = `tel:${CONTACT.tel}`;
 const title = 'Kontakta oss';
 ---
 
@@ -30,14 +32,14 @@ const title = 'Kontakta oss';
         <div class="mt-5">
           <div class="mt-2 flex items-center space-x-2 text-gray-600">
             <Icon class="h-4 w-4 text-gray-400" name="uil:map-marker" />
-            <span>Drottninggatan 4A, 724 64 Västerås</span>
+            <span>{CONTACT.address}</span>
           </div><div class="mt-2 flex items-center space-x-2 text-gray-600">
             <Icon class="h-4 w-4 text-gray-400" name="uil:envelope" /><a
-              href="mailto:info@storgardshus.se">info@storgardshus.se</a
+              href="mailto:info@storgardshus.se">{CONTACT.mail}</a
             >
           </div><div class="mt-2 flex items-center space-x-2 text-gray-600">
-            <Icon class="h-4 w-4 text-gray-400" name="uil:phone" /><a
-              href="tel:+46701234567">070-123 45 67</a
+            <Icon class="h-4 w-4 text-gray-400" name="uil:phone" /><a href={tel}
+              >{CONTACT.phone}</a
             >
           </div>
         </div>

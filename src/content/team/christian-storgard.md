@@ -1,7 +1,9 @@
 ---
 draft: false
 name: 'Christian Storgård'
-email: 'christian@byggruppen.nu'
+email: 'christian@storgardshus.se'
+phone: '070-558 63 71'
+tel: '+46705586371'
 title: 'Platschef'
 avatars:
   [

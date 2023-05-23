@@ -7,8 +7,14 @@ export const SLOGAN = 'Vi bygger dina drömmar'; //'Vi förverkligar dina byggdr
 export const SITE_TITLE = `${COMPANY_FULL} - ${SLOGAN}`;
 export const SITE_DESCRIPTION = `Välkommen till ${COMPANY_SHORT}, det professionella byggföretaget som verkar i Västerås och Mälardalen.`;
 
-export const CONTACT: { address: string; mail: string; phone: string } = {
+export const CONTACT: {
+  address: string;
+  mail: string;
+  phone: string;
+  tel: string;
+} = {
   address: 'Drottninggatan 4A, 724 64 Västerås',
   mail: 'info@storgardshus.se',
-  phone: '+46701234567'
+  phone: '070-558 63 71',
+  tel: '+46705586371'
 };

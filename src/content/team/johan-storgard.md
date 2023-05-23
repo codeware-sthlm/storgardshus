@@ -1,7 +1,9 @@
 ---
 draft: false
 name: 'Johan Storgård'
-email: 'johan@byggruppen.nu'
+email: 'johan@storgardshus.se'
+phone: '070-552 38 49'
+tel: '+46705523849'
 title: 'VD'
 avatars:
   [

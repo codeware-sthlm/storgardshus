@@ -25,6 +25,8 @@ const teamCollection = defineCollection({
     draft: z.boolean(),
     name: z.string(),
     email: z.string().email(),
+    phone: z.string().optional(),
+    tel: z.string().optional(),
     title: z.string(),
     // TODO improve typing, e.g. 'small' | 'medium' | 'large' sizes
     avatars: z.array(
