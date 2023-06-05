@@ -1,7 +1,8 @@
 ---
-import { Image } from 'astro:assets';
+// import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import Layout from '@layouts/Page.astro';
+import Avatar from '@components/Avatar.astro';
 import Container from '@components/Container.astro';
 import SectionHead from '@components/SectionHead.astro';
 import { COMPANY_SHORT } from '@config/consts';
@@ -33,26 +34,16 @@ const title = 'Om oss';
     <div class="mx-auto mt-12 grid max-w-4xl gap-10 md:grid-cols-3">
       {
         publishedTeamMembers.map((member) => {
-          const avatarLg = member.data.avatars.at(0);
-          const avatarSm = member.data.avatars.at(1);
-          const avatarXs = member.data.avatars.at(2);
+          // const avatar = member.data.avatars.at(0);
+          // const avatarSm = member.data.avatars.at(1);
+          // const avatarXs = member.data.avatars.at(2);
 
-          if (!avatarLg || !avatarSm || !avatarXs) return null;
+          // if (!avatar) return null;
 
           return (
             <div class="group">
               <div class="aspect-square w-full">
-                <Image
-                  src={`${avatarLg.src}`}
-                  width={800}
-                  height={800}
-                  sizes="(max-width: 800px) 100vw, 400px"
-                  srcset={`${avatarXs.src} ${avatarXs.width}w, ${avatarSm.src} ${avatarSm.width}w`}
-                  decoding="auto"
-                  loading="eager"
-                  class="h-full w-full rounded object-cover transition group-hover:-translate-y-1 group-hover:shadow-xl"
-                  alt={avatarLg.alt}
-                />
+                <Avatar />
               </div>
 
               <div class="mt-4 flex flex-col text-center">
@@ -78,3 +69,15 @@ const title = 'Om oss';
     </div>
   </Container>
 </Layout>
+
+<!-- <Image
+  src={`${avatarLg.src}`}
+  width={800}
+  height={800}
+  sizes="(max-width: 800px) 100vw, 400px"
+  srcset={`${avatarXs.src} ${avatarXs.width}w, ${avatarSm.src} ${avatarSm.width}w`}
+  decoding="auto"
+  loading="eager"
+  class="h-full w-full rounded object-cover transition group-hover:-translate-y-1 group-hover:shadow-xl"
+  alt={avatarLg.alt}
+/> -->

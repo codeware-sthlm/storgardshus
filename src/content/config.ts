@@ -18,7 +18,7 @@ const projectsCollection = defineCollection({
   })
 });
 
-const acceptableWidths = [200, 400, 600, 800, 1000];
+const acceptableWidths = [200, 300, 400, 600, 800, 1000];
 
 const teamCollection = defineCollection({
   schema: z.object({

@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import defaultAvatar from '@assets/images/coming_soon.webp';
+
+export interface Props {
+  src?: string;
+  alt?: string;
+  height?: number;
+  width?: number;
+}
+
+const DEFAULT_SIZE = {
+  height: 300,
+  width: 300
+};
+const { alt, height, width } = Astro.props;
+
+// TODO: props.src should be used by generates a type error on build
+---
+
+<astro-fragment>
+  <Image
+    src={defaultAvatar}
+    alt={alt ?? 'Bild kommer snart'}
+    width={width ?? DEFAULT_SIZE.width}
+    height={height ?? DEFAULT_SIZE.height}
+    class="h-full w-full rounded object-cover transition group-hover:-translate-y-1 group-hover:shadow-xl"
+  />
+</astro-fragment>
