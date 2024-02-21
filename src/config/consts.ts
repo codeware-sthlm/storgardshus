@@ -15,6 +15,6 @@ export const CONTACT: {
 } = {
   address: 'Drottninggatan 4A, 724 64 Västerås',
   mail: 'info@storgardshus.se',
-  phone: '070-558 63 71',
-  tel: '+46705586371'
+  phone: '070-522 38 49',
+  tel: '+46705523849'
 };
